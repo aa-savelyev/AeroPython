@@ -22,13 +22,13 @@ U = 1.0             # freestream
 # computes stream-function and velocity field
 psi, u, v = 0, 0, 0
 for i in range(len(x_source)):
-    psi += pblocks.source_get_stream_function(strength_source[i], x_source[i], y_source[i], X, Y)
-    u_s, v_s = pblocks.source_get_velocity(strength_source[i], x_source[i], y_source[i], X, Y)
+    psi += pblocks.get_stream_function_source(strength_source[i], x_source[i], y_source[i], X, Y)
+    u_s, v_s = pblocks.get_velocity_source(strength_source[i], x_source[i], y_source[i], X, Y)
     u += u_s
     v += v_s
     
-psi += pblocks.freestream_get_stream_function(U, 0., X, Y)
-u_stream, v_stream = pblocks.freestream_get_velocity(U, 0., X, Y)
+psi += pblocks.get_stream_function_freestream(U, 0., X, Y)
+u_stream, v_stream = pblocks.get_velocity_freestream(U, 0., X, Y)
 u += u_stream
 v += v_stream
 
